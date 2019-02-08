@@ -5,7 +5,7 @@
 int main(void)
 {
     cudaError_t err = cudaSuccess;
-    int tile_width = 2;
+    int tile_width = 4;
     int dimension = 10;
     int numElements = dimension*dimension;
     size_t size = numElements * sizeof(float);
@@ -27,7 +27,7 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    int kernel_width = 3;
+    int kernel_width = 5;
     int num_kernel = kernel_width*kernel_width;
     size_t size1 = num_kernel * sizeof(float);
 
