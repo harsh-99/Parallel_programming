@@ -5,8 +5,8 @@
 int main(void)
 {
     cudaError_t err = cudaSuccess;
-    int tile_width = 4;
-    int dimension = 10;
+    // int tile_width = 4;
+    // int dimension = 8;
     int numElements = dimension*dimension;
     size_t size = numElements * sizeof(float);
     printf("[Vector addition of %d elements]\n", numElements);
@@ -27,9 +27,9 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    int kernel_width = 5;
-    int num_kernel = kernel_width*kernel_width;
-    size_t size1 = num_kernel * sizeof(float);
+    // int mask_width = 5;
+    int num_mask = mask_width*mask_width;
+    size_t size1 = num_mask * sizeof(float);
 
     float *h_B = (float *)malloc(size1);
 
@@ -45,7 +45,7 @@ int main(void)
         h_A[i] = rand()/(float)RAND_MAX;
         // h_B[i] = rand()/(float)RAND_MAX;
     }
-    for (int i = 0; i < num_kernel; ++i)
+    for (int i = 0; i < num_mask; ++i)
     {
         h_B[i] = rand()/(float)RAND_MAX;
         // h_B[i] = rand()/(float)RAND_MAX;
@@ -71,7 +71,7 @@ int main(void)
     }
 
     float *d_C = NULL;
-    err = cudaMalloc((void **)&d_B, size1);
+    err = cudaMalloc((void **)&d_C, size);
 
     if (err != cudaSuccess)
     {
@@ -86,9 +86,9 @@ int main(void)
         }
     }
 
-    for (int i=0; i<num_kernel; i++){
+    for (int i=0; i<num_mask; i++){
         printf("%f   ", h_B[i]); 
-        if ((i+1)%kernel_width == 0){
+        if ((i+1)%mask_width == 0){
             printf("\n");
         }
     }
@@ -116,7 +116,7 @@ int main(void)
     dim3 X1(a,a,1);
     dim3 Y1(tile_width,tile_width,1);
     printf("Cuda kernel launched\n");
-    convolution<<<X1,Y1>>>(d_A, d_B, d_C, tile_width, kernel_width, dimension);
+    convolution<<<X1,Y1>>>(d_A, d_B, d_C, tile_width, mask_width, dimension);
 
 
     // int threadsPerBlock = 1024;
