@@ -1,0 +1,2 @@
+gcc version 5.4.0
+Processor Intel® Core™ i5-7300HQ CPU @ 2.50GHz × 4

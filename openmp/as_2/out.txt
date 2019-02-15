@@ -1,0 +1,3 @@
+Using number of thread as 1 Writing the value of average time for searching, calculating redundancy and data creation respectively 0.0541697s and8.05208s 0.778826s. 
+Using number of thread as 2 Writing the value of average time for searching, calculating redundancy and data creation respectively 0.0273157s and4.36493s 0.802928s. 
+Using number of thread as 4 Writing the value of average time for searching, calculating redundancy and data creation respectively 0.0161544s and2.64672s 1.86585s. 

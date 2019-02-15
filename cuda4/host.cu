@@ -2,6 +2,13 @@
 /**
  * Host main routine
  */
+
+float check(float *a, float *b){
+    float c;
+    c = a[0*dimension+1]*b[1*mask_width+0] + a[0*dimension+2]*b[1*mask_width+1] + a[0*dimension+3]*b[1*mask_width+2] + a[1*dimension+1]*b[2*mask_width+0]+ a[1*dimension+2]*b[2*mask_width+1] + a[1*dimension+3]*b[2*mask_width+2]; 
+    return c;
+}
+
 int main(void)
 {
     cudaError_t err = cudaSuccess;
@@ -149,7 +156,10 @@ int main(void)
         }
     }
 
-
+    printf("Checking one element\n");
+    float check_value;
+    check_value = check(h_A, h_B); 
+    printf("The value checked is %f\n", check_value); 	
     // Verify that the result vector is correct
     // for (int i = 0; i < numElements; ++i)
     // {
