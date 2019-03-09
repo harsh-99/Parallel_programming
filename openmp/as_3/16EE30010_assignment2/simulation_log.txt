@@ -1,0 +1,6 @@
+gcc version 5.4.0
+Processor Intel® Core™ i5-7300HQ CPU @ 2.50GHz × 4
+Thread number = 8 : Average time = 0.0774s : Total time for 72000 = 5571.97s 
+Thread Number = 4 : Average time = 0.1351s : Total time for 72000 = 9732.87s 
+Thread Number = 2 : Average time = 0.250s  : Total Time for 72000 = 17993.24s
+Thread Number = 1 : Average time =  0.3968 : Total Time for 72000 = 28539.36s 
